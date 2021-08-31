@@ -1,5 +1,5 @@
 # Plugin-Submit-Test
-A submit plugin based on the Excel2SBOL python library
+A submit plugin based on the [Excel2SBOL python library](https://pypi.org/project/excel2sbol/)
 
 # Install
 ## Docker
