@@ -37,13 +37,11 @@ def evaluate():
                             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
         
         #types that are useful (will be served to the run endpoint too but noted that they won't be converted)
-        useful_types = {'application/xml'}
+        useful_types = {}
         
         file_type_acceptable = file_type in acceptable_types
         file_type_useable = file_type in useful_types
         
-        #to ensure all file types are accepted
-        file_type_acceptable = True
         ################## END SECTION ####################################
         
         if file_type_acceptable:
