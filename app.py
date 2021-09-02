@@ -1,5 +1,5 @@
 from flask import Flask, request, abort, send_file, jsonify
-import os, shutil, tempfile
+import os, shutil, tempfile, urllib
 import excel2sbol.converter_function as conv
 
 app = Flask(__name__)
@@ -90,11 +90,14 @@ def run():
             file_path_out = os.path.join(zip_in_dir_name, converted_file_name)
             
             ########## REPLACE THIS SECTION WITH OWN RUN CODE #################
-            cwd = os.getcwd()
-            # sbol_doc_path = os.path.join(cwd, 'SBOL2Excel', 'tests', 'test_files',
-            #                             'test_sbol.xml')
-            
-            conv.converter("excel2bol_darpa_template_blank_v006_20210405.xlsx", file_url, file_path_out)
+            # use temporary file as the program accesses the excel file more
+            # than once and the file_url link is only valid once
+            req = urllib.request.urlopen(file_url)
+            temp_excel_file = tempfile.NamedTemporaryFile(delete=False)
+            temp_excel_file.write(req.read())
+            file_path_in = temp_excel_file.name
+            conv.converter("excel2bol_darpa_template_blank_v006_20210405.xlsx", file_path_in, file_path_out)
+            temp_excel_file.close()
             ################## END SECTION ####################################
         
             # add name of converted file to manifest
