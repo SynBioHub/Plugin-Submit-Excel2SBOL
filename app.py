@@ -90,10 +90,11 @@ def run():
             ########## REPLACE THIS SECTION WITH OWN RUN CODE #################
             # use temporary file as the program accesses the excel file more
             # than once and the file_url link is only valid once
-            req = urllib.request.urlopen(file_url)
-            temp_excel_file = tempfile.NamedTemporaryFile(delete=False)
-            temp_excel_file.write(req.read())
-            file_path_in = temp_excel_file.name
+            file_path_in= file_url
+#             req = urllib.request.urlopen(file_url)
+#             temp_excel_file = tempfile.NamedTemporaryFile(delete=False)
+#             temp_excel_file.write(req.read())
+#             file_path_in = temp_excel_file.name
             conv.converter("excel2bol_darpa_template_blank_v006_20210405.xlsx", file_path_in, file_path_out)
             temp_excel_file.close()
             ################## END SECTION ####################################
