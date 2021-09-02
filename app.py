@@ -104,7 +104,7 @@ def run():
 
         except Exception as e:
             print(e)
-            abort(415)
+            abort(415, e)
             
     #create manifest file
     file_path_out = os.path.join(zip_in_dir_name, "manifest.json")
