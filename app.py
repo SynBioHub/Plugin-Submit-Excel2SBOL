@@ -1,5 +1,5 @@
 from flask import Flask, request, abort, send_file, jsonify
-import os, shutil, tempfile, urllib
+import os, shutil, tempfile, urllib, sys
 import excel2sbol.converter_function as conv
 
 app = Flask(__name__)
@@ -96,7 +96,7 @@ def run():
 #             temp_excel_file.write(req.read())
 #             file_path_in = temp_excel_file.name
             conv.converter("excel2bol_darpa_template_blank_v006_20210405.xlsx", file_path_in, file_path_out)
-            temp_excel_file.close()
+#             temp_excel_file.close()
             ################## END SECTION ####################################
         
             # add name of converted file to manifest
@@ -104,8 +104,10 @@ def run():
                                     "sources":[file_name]})
 
         except Exception as e:
-            print(e)
-            abort(415, e)
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            lnum = exc_tb.tb_lineno
+            abort(415, f'Exception is: {e}, exc_type: {exc_type}, exc_obj: {exc_obj}, fname: {fname}, line_number: {lnum}')
             
     #create manifest file
     file_path_out = os.path.join(zip_in_dir_name, "manifest.json")
