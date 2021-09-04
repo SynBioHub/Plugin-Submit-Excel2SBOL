@@ -1,4 +1,4 @@
-FROM synbiohub/plugin-base
+FROM synbiohub/plugin-base:snapshot
 
 RUN apk add --no-cache --update \
     python3 python3-dev gcc \
