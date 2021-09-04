@@ -1,4 +1,4 @@
-FROM amancevice/pandas:0.24.2-alpine
+FROM synbiohub/plugin-base
 
 RUN apk add --no-cache --update \
     python3 python3-dev gcc \
