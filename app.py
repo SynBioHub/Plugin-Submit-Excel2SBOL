@@ -1,5 +1,5 @@
 from flask import Flask, request, abort, send_file, jsonify
-import os, shutil, tempfile, urllib, sys
+import os, shutil, tempfile, urllib, sys, traceback
 import excel2sbol.converter_function as conv
 
 app = Flask(__name__)
@@ -107,7 +107,7 @@ def run():
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             lnum = exc_tb.tb_lineno
-            abort(415, f'Exception is: {e}, exc_type: {exc_type}, exc_obj: {exc_obj}, fname: {fname}, line_number: {lnum}')
+            abort(415, f'Exception is: {e}, exc_type: {exc_type}, exc_obj: {exc_obj}, fname: {fname}, line_number: {lnum}, traceback: {trceback.print_exc()}')
             
     #create manifest file
     file_path_out = os.path.join(zip_in_dir_name, "manifest.json")
