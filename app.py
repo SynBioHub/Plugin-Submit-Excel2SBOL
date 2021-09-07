@@ -95,7 +95,7 @@ def run():
 #             temp_excel_file = tempfile.NamedTemporaryFile(delete=False)
 #             temp_excel_file.write(req.read())
 #             file_path_in = temp_excel_file.name
-            conv.converter("excel2bol_darpa_template_blank_v006_20210405.xlsx", file_path_in, file_path_out)
+            conv.converter("excel2bol_darpa_template_blank_v007_20210907.xlsx", file_path_in, file_path_out)
 #             temp_excel_file.close()
             ################## END SECTION ####################################
         
