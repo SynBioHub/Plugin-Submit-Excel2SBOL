@@ -1,12 +1,5 @@
-FROM synbiohub/plugin-base:snapshot
 
-RUN apk add --no-cache --update \
-    python3 python3-dev gcc \
-    gfortran musl-dev g++ \
-    libffi-dev openssl-dev \
-    libxml2 libxml2-dev \
-    libxslt libxslt-dev \
-    libjpeg-turbo-dev zlib-dev
+FROM synbiohub/docker-base-python:snapshot
 
 COPY . .
 
