@@ -1,7 +1,6 @@
 from flask import Flask, request, abort, send_file, jsonify
 import os, shutil, tempfile, urllib, sys, traceback
 import excel2sbol.converter as conv
-# import ssl
 
 app = Flask(__name__)
 
@@ -87,22 +86,8 @@ def run():
             file_path_out = os.path.join(zip_in_dir_name, converted_file_name)
             
             ########## REPLACE THIS SECTION WITH OWN RUN CODE #################
-            # use temporary file as the program accesses the excel file more
-            # than once and the file_url link is only valid once
-
-            # dir = os.path.split(__file__)[0]
-            # verpath = os.path.join(dir, 'subtest_cert.cer')
-            # print(verpath)
             file_path_in = file_url
-            # cont = ssl.create_default_context(cafile=verpath)
-            # req = urllib.request.urlopen(file_url, cafile=verpath)
-            # temp_excel_file = tempfile.NamedTemporaryFile(delete=False)
-            # temp_excel_file.write(req.read())
-            # file_path_in = temp_excel_file.name
-            # print(file_url)
-            # print(ssl.get_default_verify_paths())
             conv.converter(file_path_in, file_path_out, sbol_version=2)
-#             temp_excel_file.close()
             ################## END SECTION ####################################
         
             # add name of converted file to manifest
