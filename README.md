@@ -7,4 +7,5 @@ Run `docker run --publish 8098:5000 --detach --name submit-plug synbiohub/plugin
 Check it is up using http://localhost:8098/status.
 
 ## Using Python
-Run pip install -r requirements.txt to install the requirements. Then run `FLASK_APP=app python -m flask run`. A flask module will run at http://localhost:5000/.
+Clone the repository using `git clone https://github.com/SynBioHub/Plugin-Submit-Excel2SBOL.git` followed by `cd ./Plugin-Submit-Excel2SBOL`.
+Then run `pip install -r requirements.txt` to install the requirements. Then run `FLASK_APP=app python -m flask run`. A flask module will run at http://localhost:5000/status.
