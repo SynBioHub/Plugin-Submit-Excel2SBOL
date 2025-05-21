@@ -87,7 +87,7 @@ def run():
             
             ########## REPLACE THIS SECTION WITH OWN RUN CODE #################
             file_path_in = file_url
-            conv.converter(file_path_in, file_path_out, sbol_version=2)
+            conv(file_path_in, file_path_out, sbol_version=2)
             ################## END SECTION ####################################
         
             # add name of converted file to manifest
