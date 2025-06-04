@@ -34,7 +34,8 @@ def evaluate():
     
         #types that can be converted to sbol by this plugin
         acceptable_types = {'application/vnd.ms-excel',
-                            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
+                            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                            'application/vnd.ms-excel.sheet.macroenabled.12'}
         
         #types that are useful (will be served to the run endpoint too but noted that they won't be converted)
         useful_types = {}
